@@ -1,14 +1,15 @@
-const useHttp = ()=>{
+import { useState } from "react";
+const useHttp = ()=> {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [tasks, setTasks] = useState([]);
+    //const [tasks, setTasks] = useState([]);
   
-    const fetchTasks = async (taskText) => {
+    const sendRequest = async (taskText) => {
       setIsLoading(true);
       setError(null);
       try {
         const response = await fetch(
-          'https://react-http-6b4a6.firebaseio.com/tasks.json'
+            'https://console.firebase.google.com/project/react-project-b2fbb/database/react-project-b2fbb-default-rtdb/data/~2F/task.json'
         );
   
         if (!response.ok) {
@@ -16,5 +17,23 @@ const useHttp = ()=>{
         }
   
         const data = await response.json();
-}
+        const loadedTasks = [];
+
+        for (const taskKey in data) {
+          loadedTasks.push({ id: taskKey, text: data[taskKey].text });
+        }
+  
+        setTasks(loadedTasks);
+      } catch (err) {
+        setError(err.message || 'Something went wrong!');
+      }
+      setIsLoading(false);
+    };
+  
+    useEffect(() => {
+      fetchTasks();
+    }, []);
+  
+    }
+
 export default useHttp;
