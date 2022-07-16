@@ -1,5 +1,6 @@
 import { useState } from "react";
-const useHttp = (requestConfig)=> {
+const useHttp = (requestConfig, applyData)=> {
+
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
     //const [tasks, setTasks] = useState([]);
@@ -21,6 +22,7 @@ const useHttp = (requestConfig)=> {
         }
   
         const data = await response.json();
+        applyData(data);
       
       } catch (err) {
         setError(err.message || 'Something went wrong!');
