@@ -30,6 +30,8 @@ const useHttp = (requestConfig, applyData)=> {
       setIsLoading(false);
     };
   
+   return {
+    isLoading: isLoading,
    
     }
 
