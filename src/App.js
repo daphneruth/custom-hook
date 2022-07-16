@@ -14,9 +14,8 @@ function App() {
     setError(null);
     try {
       const response = await fetch(
-        'https://react-http-6b4a6.firebaseio.com/tasks.json'
-      );
-
+'https://console.firebase.google.com/project/react-project-b2fbb/database/react-project-b2fbb-default-rtdb/data/~2F/task.json()'
+      )
       if (!response.ok) {
         throw new Error('Request failed!');
       }
