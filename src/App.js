@@ -7,6 +7,16 @@ import useHttp from './hooks/use-http';
 function App() {
  
   const [tasks, setTasks] = useState([]);
+
+  const transformTask = taskObj => {
+    const loadedTasks = [];
+
+    for (const taskKey in taskObj) {
+      loadedTasks.push({ id: taskKey, text: taskObj[taskKey].text });
+    }
+
+    setTasks(loadedTasks);
+  }
   useHttp({url: 'https://console.firebase.google.com/project/react-project-b2fbb/database/react-project-b2fbb-default-rtdb/data/~2F/task.json()'});
 
   const fetchTasks = async (taskText) => {
