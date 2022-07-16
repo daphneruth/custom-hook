@@ -1,5 +1,5 @@
 import { useState } from "react";
-const useHttp = ()=> {
+const useHttp = (requestConfig)=> {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
     //const [tasks, setTasks] = useState([]);
@@ -9,7 +9,7 @@ const useHttp = ()=> {
       setError(null);
       try {
         const response = await fetch(
-            'https://console.firebase.google.com/project/react-project-b2fbb/database/react-project-b2fbb-default-rtdb/data/~2F/task.json'
+            requestConfig.url,
         );
   
         if (!response.ok) {
