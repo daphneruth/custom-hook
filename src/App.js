@@ -17,7 +17,7 @@ function App() {
 
     setTasks(loadedTasks);
   }
-  const httpData = useHttp({url: 'https://console.firebase.google.com/project/react-project-b2fbb/database/react-project-b2fbb-default-rtdb/data/~2F/task.json()'
+  const {isLoading, error,sendRequest:fetchTasks}= useHttp({url: 'https://console.firebase.google.com/project/react-project-b2fbb/database/react-project-b2fbb-default-rtdb/data/~2F/task.json()'
 },transformTask);
   
  const {isLoading, error,sendRequest} =httpData;
