@@ -32,9 +32,9 @@ const useHttp = (requestConfig, applyData)=> {
     };
   
    return {
-    isLoading: isLoading,
-    error:error,
-    sendRequest:sendRequest
+    isLoading,
+    error,
+    sendRequest
 
    
     };
