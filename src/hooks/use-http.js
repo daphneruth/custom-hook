@@ -9,7 +9,11 @@ const useHttp = (requestConfig)=> {
       setError(null);
       try {
         const response = await fetch(
-            requestConfig.url,
+            requestConfig.url,{
+            method: requestConfig.method,
+            headers:requestConfig.headers,
+            body:JSON.stringify(requestConfig.body)
+        }
         );
   
         if (!response.ok) {
