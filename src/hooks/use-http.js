@@ -30,10 +30,7 @@ const useHttp = (requestConfig, applyData)=> {
       setIsLoading(false);
     };
   
-    useEffect(() => {
-      fetchTasks();
-    }, []);
-  
+   
     }
 
 export default useHttp;
