@@ -11,22 +11,28 @@ function App() {
   const transformTask = taskObj => {
     const loadedTasks = [];
 
+  useEffect(() => {
+    const transformTask =(taskObj)=>{
+    const  loadedTasks =[];
+
     for (const taskKey in taskObj) {
       loadedTasks.push({ id: taskKey, text: taskObj[taskKey].text });
+    
     }
+   
+
 
     setTasks(loadedTasks);
   }
+  fetchTasks();
+}, []);
+
   const {isLoading, error,sendRequest:fetchTasks}= useHttp(transformTask);
 },transformTask);
   
  
 
   
-
-  useEffect(() => {
-    fetchTasks();
-  }, []);
 
   const taskAddHandler = (task) => {
     setTasks((prevTasks) => prevTasks.concat(task));
